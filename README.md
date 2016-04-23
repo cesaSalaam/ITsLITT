@@ -16,3 +16,9 @@ Tapping the background allows the keyboard to be closed
 Singleton (can be found in the FirebaseService.swift file)
 
 image picker: allowing images to be picked from .photogallery
+
+hiding the navigation bar on certain views
+
+segues
+
+
