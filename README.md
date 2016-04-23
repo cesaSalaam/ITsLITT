@@ -14,3 +14,5 @@ Passing data between Controllers
 Tapping the background allows the keyboard to be closed
 
 Singleton (can be found in the FirebaseService.swift file)
+
+image picker: allowing images to be picked from .photogallery
