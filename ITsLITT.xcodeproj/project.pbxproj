@@ -127,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				D95CC9951CB4409200DC360C /* AppDelegate.swift */,
-				D95CC9971CB4409200DC360C /* ViewController.swift */,
 				D95CC9C81CB57EA000DC360C /* FirebaseService.swift */,
+				D95CC9971CB4409200DC360C /* ViewController.swift */,
 				D91F16A81CBD7C45004FB184 /* CreateUserViewController.swift */,
 				D93FC5A81CC6C9DD006FC71F /* image.swift */,
 				D95CC9CC1CB58BF800DC360C /* customCell.swift */,

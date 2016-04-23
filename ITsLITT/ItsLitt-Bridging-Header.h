@@ -2,7 +2,7 @@
 //  ItsLitt-Bridging-Header.h
 //  ITsLITT
 //
-//  Created by Lifoma Salaam on 4/6/16.
+//  Created by Cesa Salaam on 4/6/16.
 //  Copyright © 2016 CesaSalaam. All rights reserved.
 //
 

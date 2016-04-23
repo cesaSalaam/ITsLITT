@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  ITsLITT
 //
-//  Created by Lifoma Salaam on 4/5/16.
+//  Created by Cesa Salaam on 4/5/16.
 //  Copyright © 2016 CesaSalaam. All rights reserved.
 //
 
@@ -15,12 +15,14 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
     let imagePicker = UIImagePickerController()
     
     @IBAction func logout(sender: AnyObject) {
-       FirebaseService.firebase.mainRef.unauth()
+        //action to log out of the app.
+        FirebaseService.firebase.mainRef.unauth()
         FirebaseService.firebase.publicImages.removeAll()
         performSegueWithIdentifier("logingout", sender: nil)
     }
     @IBAction func add(sender: AnyObject) {
-        
+        //action to open of the phot gallery
+        //accesses the photo library
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum){
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             imagePicker.allowsEditing = true
@@ -46,10 +48,6 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         cell.cellImage.image = FirebaseService.firebase.publicImages[indexPath.row].image!.image
         return cell
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //self.performSegueWithIdentifier("imageViewSegue", sender: self)
-    }
 }
 
 //MARK: image picker and getting data
@@ -65,22 +63,28 @@ extension ViewController{
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: NSDictionary!){
         self.dismissViewControllerAnimated(true, completion: nil)
-        FirebaseService.firebase.saveImageToFirebase(image, title: "Image_SAving",uid: NSUserDefaults.standardUserDefaults().stringForKey("uid")!)
-        self.getImages()
+        
+        FirebaseService.firebase.saveImageToFirebase(image, title: "Image_SAving",uid: FirebaseService.firebase.mainRef.authData.uid)
+        
+        self.getImages() //calling getImages function
+        
         FirebaseService.firebase.setupImageItems({() -> Void in
-            self.tableView.reloadData()
+            self.tableView.reloadData() // reloading table in callback
         })
     }
     
     func getImages(){
-        FirebaseService.firebase.publicImages.removeAll()
+        //function to get images from database and append them to the firebase.publicImages
+        FirebaseService.firebase.publicImages.removeAll() // resetting the public images so that thereis no duplicate
+        
         let ref = Firebase(url: "https://cesatest.firebaseio.com/imageItems/\(FirebaseService.firebase.mainRef.authData.uid)")
+        
         ref.observeEventType(.ChildAdded, withBlock: { snapshot in
-            let Image = image()
-            let data = NSData(base64EncodedString:  snapshot.value.objectForKey("data") as! String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters )
-            let img = UIImage(data: (data)!)
-            Image.image = UIImageView(image: img)
-            FirebaseService.firebase.publicImages.append(Image)
+            let Image = image() //creating new image object
+            let data = NSData(base64EncodedString:  snapshot.value.objectForKey("data") as! String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters ) //converting string from firebase to NSData
+            let img = UIImage(data: (data)!) // changing data to image
+            Image.image = UIImageView(image: img) //adding img to Image object
+            FirebaseService.firebase.publicImages.append(Image) // adding Image to publicImages
         })
     }
 }

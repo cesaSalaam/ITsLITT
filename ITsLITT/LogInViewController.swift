@@ -2,7 +2,7 @@
 //  LogInViewController.swift
 //  ITsLITT
 //
-//  Created by Lifoma Salaam on 4/12/16.
+//  Created by Cesa Salaam on 4/12/16.
 //  Copyright © 2016 CesaSalaam. All rights reserved.
 //
 
@@ -27,6 +27,7 @@ class LogInViewController: UIViewController {
             FirebaseService.firebase.userRef.authUser(email, password: passwordText, withCompletionBlock: { error, authData in
                 
                 if error != nil {
+                    // if there is an error an alert will be displayed
                     print(error)
                     self.loginErrorAlert("Oops!", message: "Check your username and password.")
                 } else {
@@ -35,14 +36,13 @@ class LogInViewController: UIViewController {
                     NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
                     
                     // Enter the app!
-                    
                     self.performSegueWithIdentifier("toTable", sender: nil)
                 }
             })
             
         } else {
             
-            // There was a problem
+            // There was a problem so an alert is shown
             
             loginErrorAlert("Oops!", message: "Don't forget to enter your email and password.")
         }
@@ -60,12 +60,20 @@ class LogInViewController: UIViewController {
     
     //MARK: Views
     override func viewWillAppear(animated: Bool) {
+        //hides the back button in the view
         self.navigationItem.setHidesBackButton(true, animated:true);
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        //resigns keyboard when background is tapped
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
     }
     
     override func viewDidLoad(){
         FirebaseService.firebase.mainRef.observeAuthEventWithBlock({ authData in
             if authData != nil {
+                //if an user is already signed in it skips the sign in view
                 self.performSegueWithIdentifier("toTable", sender: nil)
             } else {
                 // No user is signed in

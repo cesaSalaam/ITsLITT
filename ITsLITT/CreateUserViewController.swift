@@ -2,7 +2,7 @@
 //  CreateUserViewController.swift
 //  ITsLITT
 //
-//  Created by Lifoma Salaam on 4/12/16.
+//  Created by Cesa Salaam on 4/12/16.
 //  Copyright © 2016 CesaSalaam. All rights reserved.
 //
 
@@ -17,75 +17,22 @@ class CreateUserViewController: UIViewController {
     
     @IBOutlet var emailAdd: UITextField!
     
-    //Action for create an Account button click.
-    
-    //This actions takes whats stored in the textfield and creates a new user.
     
     @IBAction func createAccount(sender: AnyObject) {
         
-        let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
-        //Variables hold
-        let userNameText = username.text
-        let passwordText = password.text
-        let emailText = emailAdd.text
+        //Action for create an Account button click.
         
-        var finalUserNameText = ""
-        var finalPasswordText = ""
-        var finalEmailAddText = ""
-        if userNameText!.stringByTrimmingCharactersInSet(whitespaceSet) == "" {
-            // this statement stops user from being able to add white spaces to table
-            return
-        }
-        if username.text![username.text!.endIndex.predecessor()] == " "{
-            print(userNameText?.characters.count)
-            
-            for char in username.text!.characters{
-                if char != " "{
-                    finalUserNameText.append(char)
-                }
-            }
-        }
-        if password.text!.stringByTrimmingCharactersInSet(whitespaceSet) == "" {
-            // this statement stops user from being able to add white spaces to table
-            return
-        }
-        
-        if password.text![password.text!.endIndex.predecessor()] == " "{
-            
-            for char in password.text!.characters{
-                
-                if char != " "{
-                    
-                    finalPasswordText.append(char)
-                    
-                }
-            }
-        }
-        
-        if emailText!.stringByTrimmingCharactersInSet(whitespaceSet) == "" {
-            // this statement stops user from being able to add white spaces to table
-            return
-        }
-        if emailText![emailText!.endIndex.predecessor()] == " "{
-            for char in emailText!.characters{
-                
-                if char != " "{
-                    
-                    finalEmailAddText.append(char)
-                    
-                }
-            }
-            
-            createUser(finalEmailAddText, password: finalPasswordText, username: finalUserNameText)
-            
-            return
-            
-        }
-        createUser(emailAdd.text!, password: passwordText!, username: userNameText!)
+        //This actions takes whats stored in the textfield and creates a new user.
+        createUser(emailAdd.text!, password: password.text!, username: username.text!)
     }
-}
-//MARK: Other functions
-extension CreateUserViewController{
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        //resigns keyboard when background is tapped
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    //MARK: user function
     func createUser(email: String, password: String, username: String){
         //function that creates user
         if (username != "" && email != "" && password != ""){
@@ -125,9 +72,9 @@ extension CreateUserViewController{
         }
     }
     
-    
     func signupErrorAlert(title: String, message: String) {
         // Called upon signup error to let the user know signup didn't work.
+        //creates an alert
         let alert = UIAlertView(
             title: NSLocalizedString("Create account failed", comment: "Sign account failed"),
             message: message,
@@ -136,6 +83,4 @@ extension CreateUserViewController{
         )
         alert.show()
     }
-    
-
 }
