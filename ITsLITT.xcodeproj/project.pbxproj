@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22BDAA6AE52681D5BBD94AF5 /* Pods_ITsLITT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2A550CB67E42FDF15F6B10 /* Pods_ITsLITT.framework */; };
+		D902A9951CCB0E6C0098EE42 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D902A9941CCB0E6C0098EE42 /* FirebaseService.swift */; };
 		D91F16A71CBD79CC004FB184 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91F16A61CBD79CC004FB184 /* LogInViewController.swift */; };
 		D91F16A91CBD7C45004FB184 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91F16A81CBD7C45004FB184 /* CreateUserViewController.swift */; };
 		D93FC5A91CC6C9DD006FC71F /* image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93FC5A81CC6C9DD006FC71F /* image.swift */; };
@@ -19,7 +20,6 @@
 		D95CC9A31CB4409200DC360C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95CC9A11CB4409200DC360C /* LaunchScreen.storyboard */; };
 		D95CC9AE1CB4409200DC360C /* ITsLITTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95CC9AD1CB4409200DC360C /* ITsLITTTests.swift */; };
 		D95CC9B91CB4409200DC360C /* ITsLITTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95CC9B81CB4409200DC360C /* ITsLITTUITests.swift */; };
-		D95CC9C91CB57EA000DC360C /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95CC9C81CB57EA000DC360C /* FirebaseService.swift */; };
 		D95CC9CD1CB58BF800DC360C /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95CC9CC1CB58BF800DC360C /* customCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +43,7 @@
 /* Begin PBXFileReference section */
 		3FCA503A2C8154650427B1D9 /* Pods-ITsLITT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITsLITT.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITsLITT/Pods-ITsLITT.release.xcconfig"; sourceTree = "<group>"; };
 		6D2A550CB67E42FDF15F6B10 /* Pods_ITsLITT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITsLITT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D902A9941CCB0E6C0098EE42 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		D91F16A61CBD79CC004FB184 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D91F16A81CBD7C45004FB184 /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		D93FC5A81CC6C9DD006FC71F /* image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = image.swift; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		D95CC9B81CB4409200DC360C /* ITsLITTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITsLITTUITests.swift; sourceTree = "<group>"; };
 		D95CC9BA1CB4409200DC360C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D95CC9C71CB55CF000DC360C /* ItsLitt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ItsLitt-Bridging-Header.h"; sourceTree = "<group>"; };
-		D95CC9C81CB57EA000DC360C /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = ../../../Downloads/FirebaseService.swift; sourceTree = "<group>"; };
 		D95CC9CC1CB58BF800DC360C /* customCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 		E32A9DF3C06321177EEC4012 /* Pods-ITsLITT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITsLITT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITsLITT/Pods-ITsLITT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				D95CC9951CB4409200DC360C /* AppDelegate.swift */,
-				D95CC9C81CB57EA000DC360C /* FirebaseService.swift */,
 				D95CC9971CB4409200DC360C /* ViewController.swift */,
+				D902A9941CCB0E6C0098EE42 /* FirebaseService.swift */,
 				D91F16A81CBD7C45004FB184 /* CreateUserViewController.swift */,
 				D93FC5A81CC6C9DD006FC71F /* image.swift */,
 				D95CC9CC1CB58BF800DC360C /* customCell.swift */,
@@ -356,11 +356,11 @@
 			files = (
 				D95CC9981CB4409200DC360C /* ViewController.swift in Sources */,
 				D93FC5A91CC6C9DD006FC71F /* image.swift in Sources */,
+				D902A9951CCB0E6C0098EE42 /* FirebaseService.swift in Sources */,
 				D95CC9961CB4409200DC360C /* AppDelegate.swift in Sources */,
 				D91F16A71CBD79CC004FB184 /* LogInViewController.swift in Sources */,
 				D91F16A91CBD7C45004FB184 /* CreateUserViewController.swift in Sources */,
 				D95CC9CD1CB58BF800DC360C /* customCell.swift in Sources */,
-				D95CC9C91CB57EA000DC360C /* FirebaseService.swift in Sources */,
 				D95CC99E1CB4409200DC360C /* ITsLITT.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
